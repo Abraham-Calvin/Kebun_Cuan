@@ -1,0 +1,111 @@
+{
+  "entities": {
+    "UserSettings": {
+      "title": "UserSettings",
+      "description": "User profile, recipient preferences, initial balances, and budget limit",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "panggilanIbu": {
+          "type": "string",
+          "description": "Designation for mother/recipient"
+        },
+        "namaAnak": {
+          "type": "string",
+          "description": "User's preferred display name"
+        },
+        "nomorWhatsApp": {
+          "type": "string",
+          "description": "Optional WhatsApp phone number"
+        },
+        "saldoAwalMbanking": {
+          "type": "number",
+          "description": "Initial balance in M-Banking"
+        },
+        "saldoAwalCash": {
+          "type": "number",
+          "description": "Initial balance in cash"
+        },
+        "saldoAwalEmoney": {
+          "type": "number",
+          "description": "Initial balance in e-money"
+        },
+        "maxPengeluaranBulanan": {
+          "type": "number",
+          "description": "Monthly spending limit cap"
+        },
+        "tutorialCompleted": {
+          "type": "boolean",
+          "description": "Whether user finished the onboarding tutorial"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp of last update"
+        }
+      },
+      "required": ["userId"]
+    },
+    "UserTransaction": {
+      "title": "UserTransaction",
+      "description": "Financial transaction ledger entry",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique transaction ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "tanggal": {
+          "type": "string",
+          "description": "Date formatted YYYY-MM-DD"
+        },
+        "jenis": {
+          "type": "string",
+          "enum": ["Pengeluaran", "Pemasukan", "Tarik Tunai", "Setor Tunai"],
+          "description": "Type of transaction"
+        },
+        "judul": {
+          "type": "string",
+          "description": "Transaction title or description"
+        },
+        "kategori": {
+          "type": "string",
+          "description": "Expense or income category"
+        },
+        "metodeBayar": {
+          "type": "string",
+          "description": "Payment method"
+        },
+        "nominal": {
+          "type": "number",
+          "description": "Nominal amount in IDR"
+        },
+        "catatan": {
+          "type": "string",
+          "description": "Optional notes"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Epoch timestamp of creation"
+        }
+      },
+      "required": ["id", "userId", "tanggal", "jenis", "judul", "nominal", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/settings/config": {
+      "schema": "UserSettings",
+      "description": "Private user profile and initial wallet settings"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "UserTransaction",
+      "description": "Private user expense and income transactions"
+    }
+  }
+}

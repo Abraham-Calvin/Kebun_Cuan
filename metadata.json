@@ -1,0 +1,6 @@
+{
+  "name": "KebunKas — Buku Catatan Petani & Keuangan Harian",
+  "description": "Aplikasi pencatat pengeluaran, pemasukan, scan struk pembayaran otomatis dengan barang bukti, jurnal kegiatan hidup bergaya kebun virtual, widget saldo HP, dan ekspor laporan Excel langsung ke WhatsApp Ibu.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

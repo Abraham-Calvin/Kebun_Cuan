@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>KebunKas — Buku Catatan Keuangan &amp; Arus Kas</title>
+    <meta name="description" content="Aplikasi pencatat pengeluaran, pemasukan, scan bukti struk, grafik tren keuangan harian/bulanan/tahunan, dan ekspor laporan Excel langsung ke WhatsApp Ibu." />
+    <meta property="og:title" content="KebunKas — Buku Catatan Keuangan &amp; Arus Kas" />
+    <meta property="og:description" content="Aplikasi pencatat pengeluaran, pemasukan, scan bukti struk, grafik tren keuangan harian/bulanan/tahunan, dan ekspor laporan Excel langsung ke WhatsApp Ibu." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#1F6E43" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="KebunKas" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <script>
+      (function() {
+        // Suppress benign Vite dev server WebSocket disconnect error in AI Studio sandbox
+        const origError = console.error;
+        console.error = function(...args) {
+          const text = args.map(a => (a && a.stack ? a.stack : (a && a.message ? a.message : String(a)))).join(' ');
+          if (text.includes('WebSocket') || text.includes('@vite/client') || text.includes('[vite]')) {
+            return;
+          }
+          origError.apply(console, args);
+        };
+        window.addEventListener('error', function(e) {
+          const msg = (e && (e.message || (e.error && e.error.message))) || '';
+          if (msg.includes('WebSocket') || msg.includes('vite')) {
+            e.preventDefault?.();
+            e.stopImmediatePropagation?.();
+            return true;
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function(e) {
+          const msg = (e && e.reason && (e.reason.message || String(e.reason))) || '';
+          if (msg.includes('WebSocket') || msg.includes('vite')) {
+            e.preventDefault?.();
+            e.stopImmediatePropagation?.();
+          }
+        }, true);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#F7F8F5] text-[#18241B] antialiased selection:bg-[#1F6E43]/15 selection:text-[#1F6E43]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
